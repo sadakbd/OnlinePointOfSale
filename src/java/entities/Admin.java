@@ -6,47 +6,31 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
+/**
+ *
+ * @author Sadakul
+ */
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "USER_TYPE")
-public class Employee implements Serializable {
+public class Admin extends Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dob;
-    private String email;
-    //private String user_type;
+    //private String role;
 
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public String getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(String role) {
+//        this.role = role;
+//    }
 
     public Long getId() {
         return id;
@@ -54,14 +38,6 @@ public class Employee implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override
@@ -74,10 +50,10 @@ public class Employee implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Employee)) {
+        if (!(object instanceof Admin)) {
             return false;
         }
-        Employee other = (Employee) object;
+        Admin other = (Admin) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -86,7 +62,7 @@ public class Employee implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.Employee[ id=" + id + " ]";
+        return "entities.Admin[ id=" + id + " ]";
     }
 
 }
