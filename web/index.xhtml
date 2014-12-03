@@ -3,26 +3,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title> 
     </h:head>
     <h:body>
+        <ui:composition template="/template/master/commonMaster.xhtml">
 
+            <ui:define name="content">
 
-        <h:form>
-            <p:inputText value="#{employeeMB.emp.name}"/><br/><br/>
-            <p:calendar id="button" value="#{employeeMB.emp.dob}" showOn="button" /><br/><br/>
-            <p:inputText value="#{employeeMB.emp.email}"/><br/><br/>
-            <p:selectOneMenu  value="#{employeeMB.employeeType}" ><br/><br/>
-                <f:selectItem itemLabel="Admin" itemValue="Admin" />
-                <f:selectItem itemLabel="Manger" itemValue="Manager" />
-                <f:selectItem itemLabel="Cashier" itemValue="Cashier" />
-            </p:selectOneMenu><br/><br/>
-            <p:commandButton value="Create" actionListener="#{employeeMB.addEmployee}"/>
-        </h:form>
+                <h:form>
+                    Name:<p:inputText value="#{employeeMB.emp.name}"/><br/><br/>
+                    Date of Birth:<p:calendar id="button" value="#{employeeMB.emp.dob}" showOn="button" /><br/><br/>
+                    Email:<p:inputText value="#{employeeMB.emp.email}"/><br/><br/>
+                    EmployeeType:<p:selectOneMenu  value="#{employeeMB.employeeType}" ><br/><br/>
+                        <f:selectItem itemLabel="Admin" itemValue="Admin" />
+                        <f:selectItem itemLabel="Manger" itemValue="Manager" />
+                        <f:selectItem itemLabel="Cashier" itemValue="Cashier" />
+                    </p:selectOneMenu><br/><br/>
+                    <p:commandButton value="Create" actionListener="#{employeeMB.addEmployee}"/>
+                </h:form>
 
+            </ui:define>
 
+        </ui:composition>
 
     </h:body>
 </html>
